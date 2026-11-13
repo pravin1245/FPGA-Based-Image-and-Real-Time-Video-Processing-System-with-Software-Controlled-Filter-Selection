@@ -202,15 +202,15 @@ The processed image is then transferred back to DDR memory using DMA and display
 
 The implemented design uses one input DMA (`axi_dma_4`, MM2S and S2MM), three S2MM-only DMAs (`axi_dma_1`, `axi_dma_2`, `axi_dma_3`), two SmartConnect crossbars, the AXI4-Stream broadcaster, the Gaussian/Sobel, Laplacian and Canny cores, four GPIO-controlled output gates and four AXI4-Stream FIFOs. The five DMA master ports share the PS high-performance port `S_AXI_HP0`.
 
-<img src="images/block-design.png" alt="Vivado block design" width="900">
+<img src="images/images/block-design.png" alt="Vivado block design" width="900">
 
 *Figure: Vivado IP Integrator block design of the implemented system (redrawn from the hardware handoff file).*
 
-<img src="images/data-path.png" alt="System data path" width="900">
+<img src="images/images/data-path.png" alt="System data path" width="900">
 
 *Figure: System data path, PS → PL streaming pipeline → PS, running in a single 120 MHz clock domain.*
 
-<img src="images/filter-selection-datapath.png" alt="Filter selection datapath" width="900">
+<img src="images/images/filter-selection-datapath.png" alt="Filter selection datapath" width="900">
 
 *Figure: Filter-selection datapath. Each of the four lanes keeps its own filter core running every cycle; the GPIO-driven Slice/gate pair only decides which lane's pixels continue to its FIFO and S2MM DMA.*
 
@@ -256,25 +256,25 @@ The system supports four image-processing operations: Gaussian, Sobel, Laplacian
 
 ### 7.2 Gaussian Filter Output
 
-![Gaussian Filter Output](images/gaussian-output.png)
+![Gaussian Filter Output](images/images/gaussian-output.png)
 
 *Figure 3: Gaussian filter output showing image smoothing and noise reduction.*
 
 ### 7.3 Sobel Filter Output
 
-![Sobel Filter Output](images/sobel-output.png)
+![Sobel Filter Output](images/images/sobel-output.png)
 
 *Figure 4: Sobel filter output highlighting image edges and boundaries.*
 
 ### 7.4 Laplacian Filter Output
 
-![Laplacian Filter Output](images/laplacian-output.png)
+![Laplacian Filter Output](images/images/laplacian-output.png)
 
 *Figure 5: Laplacian filter output highlighting rapid changes in image intensity.*
 
 ### 7.5 Canny Filter Output
 
-![Canny Filter Output](images/canny-output.png)
+![Canny Filter Output](images/images/canny-output.png)
 
 *Figure 6: Canny filter output showing detected edges.*
 
@@ -284,19 +284,19 @@ The system supports four image-processing operations: Gaussian, Sobel, Laplacian
 
 A saved video is selected with `input_video("sample_video.mp4")` and processed with `video_gaussian()`, `video_sobel()`, `video_laplacian()` or `video_canny()`. The figures show a stored test frame (a blue ellipse, a yellow rectangle, a green triangle and white lines on a gradient background) together with the processed frame for each command.
 
-![Saved Video - Gaussian](images/video-gaussian-output.png)
+![Saved Video - Gaussian](images/images/video-gaussian-output.png)
 
 *Figure 7: Saved video, `video_gaussian()` output.*
 
-![Saved Video - Sobel](images/video-sobel-output.png)
+![Saved Video - Sobel](images/images/video-sobel-output.png)
 
 *Figure 8: Saved video, `video_sobel()` output.*
 
-![Saved Video - Laplacian](images/video-laplacian-output.png)
+![Saved Video - Laplacian](images/images/video-laplacian-output.png)
 
 *Figure 9: Saved video, `video_laplacian()` output.*
 
-![Saved Video - Canny](images/video-canny-output.png)
+![Saved Video - Canny](images/images/video-canny-output.png)
 
 *Figure 10: Saved video, `video_canny()` output.*
 
@@ -306,23 +306,23 @@ A saved video is selected with `input_video("sample_video.mp4")` and processed w
 
 The live camera is selected with `input_video("live_video")`. A USB camera is plugged into the USB host port of the PYNQ-Z2 board and is found automatically by the notebook; the micro-USB (PROG UART) cable powers the board and gives the connection to the computer, and an HDMI cable is also fitted. No additional hardware is needed, because the camera frames are processed by the same filter cores as the image and the saved video.
 
-![Live Camera Setup](images/live-camera-setup.png)
+![Live Camera Setup](images/images/live-camera-setup.png)
 
 *Figure 11: Experimental setup for live video processing: PYNQ-Z2 board with the USB camera connected to its USB host port.*
 
-![Live Camera - Gaussian](images/live-gaussian-output.png)
+![Live Camera - Gaussian](images/images/live-gaussian-output.png)
 
 *Figure 12: Live camera, `video_gaussian()` output.*
 
-![Live Camera - Sobel](images/live-sobel-output.png)
+![Live Camera - Sobel](images/images/live-sobel-output.png)
 
 *Figure 13: Live camera, `video_sobel()` output.*
 
-![Live Camera - Laplacian](images/live-laplacian-output.png)
+![Live Camera - Laplacian](images/images/live-laplacian-output.png)
 
 *Figure 14: Live camera, `video_laplacian()` output.*
 
-![Live Camera - Canny](images/live-canny-output.png)
+![Live Camera - Canny](images/images/live-canny-output.png)
 
 *Figure 15: Live camera, `video_canny()` output.*
 
@@ -348,15 +348,15 @@ The project report records the following implementation and timing results (Viva
 | Junction Temperature | 45.7 °C |
 | Thermal Margin | 39.3 °C |
 
-<img src="images/resource-utilisation.png" alt="Resource utilisation" width="800">
+<img src="images/images/resource-utilisation.png" alt="Resource utilisation" width="800">
 
 *Figure: Post-implementation resource utilisation of the xc7z020 device.*
 
-<img src="images/timing-slack.png" alt="Timing slack" width="800">
+<img src="images/images/timing-slack.png" alt="Timing slack" width="800">
 
 *Figure: Worst setup, hold and pulse-width slack after implementation.*
 
-<img src="images/power-breakdown.png" alt="Power breakdown" width="800">
+<img src="images/images/power-breakdown.png" alt="Power breakdown" width="800">
 
 *Figure: On-chip power, static and dynamic share and dynamic breakdown.*
 
@@ -400,7 +400,7 @@ All three modes use the same programmable-logic design, so the resource use, tim
 | Stage that limits the rate | Python and Matplotlib display | Source frame rate; Python JPEG encoding | Camera read, resizing and JPEG encoding in Python |
 | Extra hardware needed | None | None | None |
 
-<img src="images/mode-comparison.png" alt="Memory and data rate comparison" width="900">
+<img src="images/images/mode-comparison.png" alt="Memory and data rate comparison" width="900">
 
 *Figure: Comparison of the software memory (left, logarithmic scale) and the average data rates per path (right) for image, stored-video and live-video processing.*
 
@@ -520,4 +520,3 @@ The main concept of our project is to support multiple image-processing operatio
 **Institute:** Vidyalankar Institute of Technology, Mumbai
 
 **Academic Year:** 2026–2027
-
