@@ -125,73 +125,8 @@ The processed image is then transferred back to DDR memory using DMA and display
 
 ## 5. System Block Diagram
 
-```text
-                  ┌────────────────────────┐
-                  │       Input Image      │
-                  └────────────┬───────────┘
-                               │
-                               ▼
-                  ┌────────────────────────┐
-                  │   Image Preparation    │
-                  │ Resize and Grayscale   │
-                  │    256 × 256, 8-bit    │
-                  └────────────┬───────────┘
-                               │
-                               ▼
-                  ┌────────────────────────┐
-                  │   DDR Memory (Input)   │
-                  └────────────┬───────────┘
-                               │
-                               ▼
-                  ┌────────────────────────┐
-                  │    Input AXI DMA       │
-                  │        MM2S            │
-                  └────────────┬───────────┘
-                               │
-                               ▼
-                  ┌────────────────────────┐
-                  │    AXI Broadcaster     │
-                  └─────┬─────┬─────┬──────┘
-                        │     │     │     │
-             ┌──────────┘     │     │     └──────────┐
-             ▼                ▼     ▼                ▼
-       ┌──────────┐      ┌────────┐ ┌──────────┐ ┌──────────┐
-       │ Gaussian │      │ Sobel  │ │Laplacian │ │  Canny   │
-       │  Filter  │      │ Filter │ │  Filter  │ │  Filter  │
-       └─────┬────┘      └───┬────┘ └────┬─────┘ └────┬─────┘
-             └───────────────┴──────┬────┴────────────┘
-                                    │
-                                    ▼
-                         ┌────────────────────────┐
-                         │ Output Gate / Selection│
-                         │    Controlled by GPIO  │
-                         └────────────┬───────────┘
-                                      │
-                                      ▼
-                         ┌────────────────────────┐
-                         │    AXI Stream FIFO     │
-                         └────────────┬───────────┘
-                                      │
-                                      ▼
-                         ┌────────────────────────┐
-                         │    Output AXI DMA      │
-                         │         S2MM           │
-                         └────────────┬───────────┘
-                                      │
-                                      ▼
-                         ┌────────────────────────┐
-                         │   DDR Memory (Output)  │
-                         └────────────┬───────────┘
-                                      │
-                                      ▼
-                         ┌────────────────────────┐
-                         │    Python / Jupyter    │
-                         │    Displayed Result    │
-                         └────────────────────────┘
-
-       Jupyter Notebook ──► AXI GPIO ──► Filter / Output Selection
-```
-
+ <img src="images/images/block-design.jpeg" alt="Vivado block design" width="900">
+    
 ### Complete Data Flow
 
 **Input Image → Image Preparation → DDR Memory → Input DMA → AXI4-Stream → AXI Broadcaster → Selected Image Processing → Output Gate → FIFO → Output DMA → DDR Memory → Python → Displayed Result**
