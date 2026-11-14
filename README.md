@@ -248,9 +248,10 @@ The system uses AXI-based IP cores and custom image-processing hardware to trans
 
 The system supports four image-processing operations: Gaussian, Sobel, Laplacian and Canny. The input image is prepared in grayscale format, processed by the selected FPGA hardware path and displayed through Jupyter Notebook. The same four operations are also applied to stored video and live camera frames.
 
-### 7.1 Input Image
+### 7.1 Input video
 
-![Input Image](images/input-image.png)
+![Input Image](Input_Image/Input_image_03.png)
+               
 
 *Figure 2: Input image supplied to the image-processing system.*
 
