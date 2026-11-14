@@ -1,25 +1,95 @@
-%run predefined.py.ipynb
+# In[ ]:
+
+
 input_image("input_image.png")
-run_gaussian()
+image_gaussian()
 
 
-%run predefined.py.ipynb
+# In[ ]:
+
+
+input_video("sample_video.mp4")
+video_gaussian()
+
+
+# In[ ]:
+
+
+input_video("live_video") 
+video_gaussian()
+
+
+# In[ ]:
+
+
 input_image("input_image.png")
-run_sobel()
+image_sobel()
 
-%run predefined.py.ipynb
+
+# In[ ]:
+
+
+
+input_video("sample_video.mp4")
+video_sobel()
+
+
+# In[ ]:
+
+
+input_video("live_video")    
+video_sobel()
+
+
+# In[ ]:
+
+
+
 input_image("input_image.png")
-run_laplacian()
+image_laplacian()
+
+
+# In[ ]:
 
 
 
+input_video("sample_video2.mp4")
+video_laplacian()
 
-%run predefined.py.ipynb
+
+# In[ ]:
+
+
+input_video("live_video") 
+video_laplacian()
+
+
+# In[ ]:
+
+
+
 input_image("input_image.png")
-run_canny()
+image_canny()
+
+
+# In[ ]:
 
 
 
-%run predefined.py.ipynb
+input_video("sample_video.mp4")
+video_canny()
+
+
+# In[ ]:
+
+
+input_video("live_video")   
+video_canny()   
+
+
+# In[ ]:
+
+
+
 input_image("input_image.png")
-run_all()
+image_all()
