@@ -137,7 +137,7 @@ The processed image is then transferred back to DDR memory using DMA and display
 
 The implemented design uses one input DMA (`axi_dma_4`, MM2S and S2MM), three S2MM-only DMAs (`axi_dma_1`, `axi_dma_2`, `axi_dma_3`), two SmartConnect crossbars, the AXI4-Stream broadcaster, the Gaussian/Sobel, Laplacian and Canny cores, four GPIO-controlled output gates and four AXI4-Stream FIFOs. The five DMA master ports share the PS high-performance port `S_AXI_HP0`.
 
-<img src="images/images/block-design.jpeg" alt="Vivado block design" width="900">
+<img src="images/images/Vivado_Block_Design.pdf" alt="Vivado block design" width="900">
 
 *Figure: Vivado IP Integrator block design of the implemented system (redrawn from the hardware handoff file).*
 
